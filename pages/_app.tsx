@@ -2,12 +2,16 @@ import ReduxStoreProvider from "@/components/redux-store-provider/ReduxStoreProv
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Layout from "../components/layout";
+import ErrorBoundary from "@/components/errorboundary/ErrorBoundary";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-  <ReduxStoreProvider>
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  </ReduxStoreProvider>);
+    <ErrorBoundary>
+      <ReduxStoreProvider>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ReduxStoreProvider>
+    </ErrorBoundary>
+  );
 }
